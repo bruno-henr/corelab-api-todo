@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2021",
+    "module": "commonjs",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    // "rootDir": "./dist",
+    "outDir": "./dist",
+    "typeRoots": ["./node_modules/@types", "./src/@types"],
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "types": ["jest", "node"],
+    "paths": {
+      "@database/*": ["./src/repositories/database/*"],
+      "@implementations/*": ["./src/repositories/implementations/*"],
+      "@interfaces/*": ["./src/repositories/interfaces/*"],
+      "@useCases/*": ["./src/useCases/*"],
+      "@utils/*": ["./src/utils/*"],
+
+    }
+  },
+  "include": ["src/**/*.ts"]
+}
