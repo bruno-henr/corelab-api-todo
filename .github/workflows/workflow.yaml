@@ -19,6 +19,10 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: test # `yarn test`
+      - name: Add types jest
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: add @types/jest -D --ignore-engines # `yarn add @types/jest -D --ignore-engines` 
       - name: Build the app
         uses: borales/actions-yarn@v4
         with:
