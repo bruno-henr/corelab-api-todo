@@ -6,6 +6,7 @@ COPY package*.json ./
 RUN yarn
 
 COPY . .
+RUN yarn prisma migrate dev
 RUN yarn prisma generate
 
 EXPOSE 3003

@@ -32,6 +32,8 @@ services:
       - db
 
   
+volumes:
+  data: {}
 
 networks:
   my-bridge-network:
