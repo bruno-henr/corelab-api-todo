@@ -2,7 +2,7 @@ import { ITaskRepository } from "../../repositories/interfaces/ITaskRepository";
 import { describe, expect, test, beforeAll, afterAll, beforeEach, afterEach } from "@jest/globals";
 import { CreateTaskUseCase } from "../../useCases/task/create/useCase";
 import { InMemoryTaskRepository } from "../../__in_memory__/InMemoryTaskRepository";
-import { uuid } from "uuidv4";
+import { v4 } from "uuid";
 import { Task } from "@prisma/client";
 import { EditTaskUseCase } from "../../useCases/task/edit/useCase";
 
@@ -12,7 +12,7 @@ describe("Edit Task", () => {
 
     let createTaskUseCase: CreateTaskUseCase | null;
     let editTaskUseCase: EditTaskUseCase | null;
-    const expectedId = uuid();
+    const expectedId = v4();
     let task: Task = {} as Task;
     beforeEach(async () => {
         taskRepositoryInMemory = new InMemoryTaskRepository();

@@ -2,7 +2,7 @@ import { ITaskRepository } from "../../repositories/interfaces/ITaskRepository";
 import { describe, expect, test, beforeEach, afterEach } from "@jest/globals";
 import { CreateTaskUseCase } from "../../useCases/task/create/useCase";
 import { InMemoryTaskRepository } from "../../__in_memory__/InMemoryTaskRepository";
-import { uuid } from "uuidv4";
+import { v4 } from "uuid";
 import { ListTaskUseCase } from "../../useCases/task/list/useCase";
 
 
@@ -11,7 +11,7 @@ describe("List Task", () => {
 
     let createTaskUseCase: CreateTaskUseCase | null;
     let listTaskUseCase: ListTaskUseCase | null;
-    const expectedId = uuid();
+    const expectedId = v4();
 
     beforeEach(async () => {
         taskRepositoryInMemory = new InMemoryTaskRepository();

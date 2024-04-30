@@ -2,7 +2,7 @@ import { ITaskRepository } from "../../repositories/interfaces/ITaskRepository";
 import { describe, expect, test, beforeAll, afterAll, beforeEach, afterEach } from "@jest/globals";
 import { CreateTaskUseCase } from "../../useCases/task/create/useCase";
 import { InMemoryTaskRepository } from "../../__in_memory__/InMemoryTaskRepository";
-import { uuid } from "uuidv4";
+import { v4 } from 'uuid';
 
 
 describe("Create Task", () => {
@@ -20,7 +20,7 @@ describe("Create Task", () => {
     });
 
     test("should be able create an task", async () => {
-        const expectedId = uuid();
+        const expectedId = v4();
         let task = {
             id: expectedId,
             title: "Estudar javascript",
@@ -34,7 +34,7 @@ describe("Create Task", () => {
     });
 
     test("should be able create an task not favorite", async () => {
-        const expectedId = uuid();
+        const expectedId = v4();
         let task = {
             id: expectedId,
             title: "Estudar javascript",
@@ -47,7 +47,7 @@ describe("Create Task", () => {
     })
 
     test("it shouldn't be able create an task without title", async () => {
-        const expectedId = uuid();
+        const expectedId = v4();
         let task = {
             id: expectedId,
             title: "",
@@ -60,7 +60,7 @@ describe("Create Task", () => {
     })
 
     test("it shouldn't be able create an task without content", async () => {
-        const expectedId = uuid();
+        const expectedId = v4();
         let task = {
             id: expectedId,
             title: "Estudar javascript",
@@ -73,7 +73,7 @@ describe("Create Task", () => {
     })
 
     test("it shouldn't be able create an task without color", async () => {
-        const expectedId = uuid();
+        const expectedId = v4();
         let task = {
             id: expectedId,
             title: "Estudar javascript",

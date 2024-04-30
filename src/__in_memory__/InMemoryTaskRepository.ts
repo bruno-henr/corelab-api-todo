@@ -2,7 +2,6 @@ import { ITaskRepository } from "../repositories/interfaces/ITaskRepository";
 import { Task } from "@prisma/client";
 import { ICreateTaskDTO } from "../useCases/task/create/DTO";
 import { ResponseDTO } from "../utils/ResponseDTO";
-import { uuid } from "uuidv4";
 import { IEditTaskDTO } from "../useCases/task/edit/DTO";
 
 export class InMemoryTaskRepository implements ITaskRepository {
