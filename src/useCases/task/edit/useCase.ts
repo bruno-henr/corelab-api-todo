@@ -8,14 +8,18 @@ export class EditTaskUseCase {
     ) { }
 
     async execute(data: IEditTaskDTO): Promise<ResponseDTO> {
-        if (!data.id) {
-            throw new Error("ID is required.");
-        }
+        try {
+            if (!data.id) {
+                throw new Error("ID is required.");
+            }
 
-        const response = await this.taskRepository.put(data);
-        if (response.has_error && response.error === 'Task does not exist') {
-            throw new Error("ID not found.");
+            const response = await this.taskRepository.put(data);
+            if (response.has_error && response.error === 'Task does not exist') {
+                throw new Error("ID not found.");
+            }
+            return response;
+        } catch (error) {
+            return new ResponseDTO({}, true, error.message)
         }
-        return response;
     }
 }

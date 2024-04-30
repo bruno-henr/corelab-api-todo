@@ -8,18 +8,23 @@ export class CreateTaskUseCase {
     ) { }
 
     async execute(data: ICreateTaskDTO): Promise<ResponseDTO> {
-        if(data.favorite === null || data.favorite === undefined) {
-            data.favorite = false;
+        try {
+            if (data.favorite === null || data.favorite === undefined) {
+                data.favorite = false;
+            }
+            if (!data.title) {
+                throw new Error("Title is required.");
+            }
+            if (!data.content) {
+                throw new Error("Content is required.");
+            }
+            if (!data.color) {
+                throw new Error("Color is required.");
+            }
+            return await this.taskRepository.post(data);
+        } catch (error) {
+            return new ResponseDTO({}, true, error.message)
         }
-        if(!data.title) {
-            throw new Error("Title is required.");
-        }
-        if(!data.content) {
-            throw new Error("Content is required.");
-        }
-        if(!data.color) {
-            throw new Error("Color is required.");
-        }
-        return await this.taskRepository.post(data);
+
     }
 }
