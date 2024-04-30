@@ -4,6 +4,7 @@ import { validateRequest } from '@utils/validateRequest'
 import { handleValidationErrors } from '@utils/handleValidationErrors';
 import { editTaskController } from '@useCases/task/edit';
 import { listTaskController } from '@useCases/task/list';
+import { removeTaskController } from '@useCases/task/remove';
 export const task_router = Express.Router();
 
 task_router.post('/task',
@@ -19,4 +20,10 @@ task_router.put('/task',
 )
 task_router.get('/task',
     listTaskController.handle.bind(listTaskController)
+)
+
+task_router.delete('/task/:id',
+    validateRequest('deleteTask'),
+    handleValidationErrors,
+    removeTaskController.handle.bind(removeTaskController),
 )
