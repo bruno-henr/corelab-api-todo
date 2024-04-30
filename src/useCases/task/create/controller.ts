@@ -1,3 +1,4 @@
+import { ResponseDTO } from "@utils/ResponseDTO";
 import { CreateTaskUseCase } from "./useCase";
 import { Request, Response } from 'express';
 
@@ -7,8 +8,13 @@ export class CreateTaskController {
     ) { }
 
     async handle(request: Request, response: Response): Promise<Response> {
-        const result = await this.createTaskUsecase.execute(request.body);
-        if (result.has_error) return response.status(400).json(result)
-        return response.status(201).json(result)
+        try {
+            const result = await this.createTaskUsecase.execute(request.body);
+            if (result.has_error) return response.status(400).json(result)
+            return response.status(201).json(result)
+        } catch (error) {
+            const errorObject = new ResponseDTO({}, true, error.message);
+            return response.status(400).json(errorObject)
+        }
     }
 }
