@@ -1,4 +1,4 @@
-import { body } from 'express-validator';
+import { body,param } from 'express-validator';
 
 export const validateRequest = (method: string) => {
     switch (method) {
@@ -17,6 +17,11 @@ export const validateRequest = (method: string) => {
                 body('content').optional().isString(),
                 body('color').optional().isString(),
                 body('favorite').optional().isBoolean()
+            ]
+        }
+        case 'deleteTask': {
+            return [
+                param('id', 'ID é obrigatório para exclusão de uma tarefa').exists().isString(),
             ]
         }
     }
