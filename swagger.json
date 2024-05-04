@@ -1,0 +1,458 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "CoreNotes API",
+        "description": "Uma API para controlar suas tarefas.",
+        "version": "1.0",
+        "contact": {
+            "name": "Bruno Henrique",
+            "email": "brunohenriquefeitz@gmail.com"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3003/v1/api",
+            "description": "Base URL"
+        }
+    ],
+    "paths": {
+        "/task": {
+            "post": {
+                "summary": "create tasks",
+                "requestBody": {
+                    "description": "Objeto necessário para adicionar uma tarefa.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Fazer compras"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "example": "Pegar lista de compras"
+                                    },
+                                    "favorite": {
+                                        "type": "boolean",
+                                        "example": true
+                                    },
+                                    "color": {
+                                        "type": "string",
+                                        "example": "#fff"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Task Object Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string",
+                                                    "example": "58d966cc-0e19-486d-9844-4364bdea70b4"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2024-04-30T00:27:45.952Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2024-04-30T00:27:45.952Z"
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Fazer compras"
+                                                },
+                                                "content": {
+                                                    "type": "string",
+                                                    "example": "Pegar lista de compras"
+                                                },
+                                                "favorite": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "color": {
+                                                    "type": "string",
+                                                    "example": "#fff"
+                                                }
+                                            }
+                                        },
+                                        "has_error": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": null
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Task Object Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "example": {}
+                                        },
+                                        "has_error": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "[Error error]"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Get All Tasks",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Task Object Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "example": [
+                                                {
+                                                    "id": {
+                                                        "type": "string",
+                                                        "example": "58d966cc-0e19-486d-9844-4364bdea70b4"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2024-04-30T00:27:45.952Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2024-04-30T00:27:45.952Z"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Fazer compras"
+                                                    },
+                                                    "content": {
+                                                        "type": "string",
+                                                        "example": "Pegar lista de compras"
+                                                    },
+                                                    "favorite": {
+                                                        "type": "boolean",
+                                                        "example": true
+                                                    },
+                                                    "color": {
+                                                        "type": "string",
+                                                        "example": "#fff"
+                                                    }
+                                                },
+                                                {
+                                                    "id": {
+                                                        "type": "string",
+                                                        "example": "58d966cc-0e19-486d-9844-4364bdea70b4"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2024-04-30T00:27:45.952Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2024-04-30T00:27:45.952Z"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Estudar"
+                                                    },
+                                                    "content": {
+                                                        "type": "string",
+                                                        "example": "Estudar javascript"
+                                                    },
+                                                    "favorite": {
+                                                        "type": "boolean",
+                                                        "example": true
+                                                    },
+                                                    "color": {
+                                                        "type": "string",
+                                                        "example": "#fff"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "has_error": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": null
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Task Object Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "example": {}
+                                        },
+                                        "has_error": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "[Error error]"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Edit task",
+                "requestBody": {
+                    "description": "Object required to edit a task.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "example": "b87e0ae2-521d-479c-bbd2-42cadf3c0c28"
+                                    },
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Limpar o carro"
+                                    },
+                                    "content": {
+                                        "type": "string",
+                                        "example": "Pegar produtos de limpeza"
+                                    },
+                                    "favorite": {
+                                        "type": "boolean",
+                                        "example": true
+                                    },
+                                    "color": {
+                                        "type": "string",
+                                        "example": "#fff"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Task Object Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string",
+                                                    "example": "b87e0ae2-521d-479c-bbd2-42cadf3c0c28"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2024-04-30T00:27:45.952Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2024-04-30T00:27:45.952Z"
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Limpar o carro"
+                                                },
+                                                "content": {
+                                                    "type": "string",
+                                                    "example": "Pegar produtos de limpeza"
+                                                },
+                                                "favorite": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "color": {
+                                                    "type": "string",
+                                                    "example": "#fff"
+                                                }
+                                            }
+                                        },
+                                        "has_error": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": null
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Task Object Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "example": {}
+                                        },
+                                        "has_error": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "[Error error]"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task/{id}": {
+            "delete": {
+                "summary": "Delete an Task",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID of the task to be deleted",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Task Object Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string",
+                                                    "example": "58d966cc-0e19-486d-9844-4364bdea70b4"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2024-04-30T00:27:45.952Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2024-04-30T00:27:45.952Z"
+                                                },
+                                                "title": {
+                                                    "type": "string",
+                                                    "example": "Fazer compras"
+                                                },
+                                                "content": {
+                                                    "type": "string",
+                                                    "example": "Pegar lista de compras"
+                                                },
+                                                "favorite": {
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "color": {
+                                                    "type": "string",
+                                                    "example": "#fff"
+                                                }
+                                            }
+                                        },
+                                        "has_error": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": null
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Task Object Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "example": {}
+                                        },
+                                        "has_error": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "[Error error]"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
