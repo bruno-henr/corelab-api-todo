@@ -1,6 +1,8 @@
 import Express from 'express';
 import { task_router } from './tasks.routes';
 
-export const router = Express.Router();
+ const router = Express.Router();
 
 router.use(task_router);
+
+export default router;
